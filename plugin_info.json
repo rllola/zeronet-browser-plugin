@@ -1,0 +1,5 @@
+{
+	"name": "Browser",
+	"description": "Plugin required when using ZeroNet with Zeronet Browser.",
+	"default": "enabled"
+}
