@@ -19,15 +19,15 @@ class UiWebsocketPlugin(object):
             for websocket in self.server.websockets:
                 websocket.cmd(
                     "notification",
-                    ["info", _["Updating ZeroNet client, will be back in a few minutes..."], 20000]
+                    ["info", _["Close the browser to finish updating ZeroNet core."], 20000]
                 )
-                websocket.cmd("updating")
+                #websocket.cmd("updating")
 
             import main
             main.update_after_shutdown = True
-            SiteManager.site_manager.save()
-            main.file_server.stop()
-            main.ui_server.stop()
+            #SiteManager.site_manager.save()
+            #main.file_server.stop()
+            #main.ui_server.stop()
 
         self.cmd(
             "confirm",
