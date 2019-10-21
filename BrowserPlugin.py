@@ -6,6 +6,7 @@ from Plugin import PluginManager
 from Translate import translate as _
 from util.Flag import flag
 from Config import config
+from Site import SiteManager
 
 @PluginManager.registerTo("UiWebsocket")
 class UiWebsocketPlugin(object):
@@ -26,9 +27,11 @@ class UiWebsocketPlugin(object):
 
             import main
             main.update_after_shutdown = True
-            #SiteManager.site_manager.save()
-            #main.file_server.stop()
-            #main.ui_server.stop()
+
+            if not sys.platform.startswith("linux"):
+                SiteManager.site_manager.save()
+                main.file_server.stop()
+                main.ui_server.stop()
 
         if os.access(os.getcwd(), os.W_OK):
             self.cmd(
